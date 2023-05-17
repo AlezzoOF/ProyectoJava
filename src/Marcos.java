@@ -4,6 +4,7 @@ import java.awt.event.*;
 
 public class Marcos extends JFrame {
     private Laminas tipo, tiposMensajes, mensajes, confirmar, opcion, entrada;
+    private String mensaje;
 
     public Marcos() {
         setTitle("Prueba de Java");
