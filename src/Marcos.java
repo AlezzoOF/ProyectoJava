@@ -84,17 +84,17 @@ public class Marcos extends JFrame {
 
                         switch (tipo.seleccion()) {
                                 case "Mensaje":
-                                        JOptionPane.showMessageDialog(Marcos.this, getMensaje());
+                                        JOptionPane.showMessageDialog(Marcos.this, getMensaje(),"title", getTipoDeMensaje());
                                         break;
                                 case "Confirmar":
-                                        JOptionPane.showConfirmDialog(Marcos.this, getMensaje());
+                                        JOptionPane.showConfirmDialog(Marcos.this, getMensaje(),"title", 0, getTipoDeMensaje());
                                         break;
                                 case "Opcion":
-                                        JOptionPane.showOptionDialog(Marcos.this, getMensaje(), "title", 0, 0, null, null,
+                                        JOptionPane.showOptionDialog(Marcos.this, getMensaje(), "title", 0, getTipoDeMensaje(), null, null,
                                                         null);
                                         break;
                                 case "Entrada":
-                                        JOptionPane.showInputDialog(Marcos.this, getMensaje());
+                                        JOptionPane.showInputDialog(Marcos.this, getMensaje(), "title", getTipoDeMensaje());
                                         break;
                         }
 
@@ -102,7 +102,7 @@ public class Marcos extends JFrame {
 
         }
 
-        //Metodo para mostrar mensaje de lamina "mensajes"
+        //Metodo para sacar la info de la lamina "mensajes"
 
         public Object getMensaje(){
                 switch (mensajes.seleccion()) {
@@ -119,6 +119,27 @@ public class Marcos extends JFrame {
 
                         default:
                                 return null;
+                }
+                
+        }
+
+
+        //Metodo para sacar la info de la lamina "Tipo de Mensaje"
+        public int getTipoDeMensaje(){
+                switch (tiposMensajes.seleccion()) {
+                        case "ERROR_MESSAGE":
+                                return 0;
+                        case "INFORMATION_MESSAGE":
+                                return 1;
+                        case "WARNING_MESSAGE":
+                                return 2;
+                        case "QUESTION_MESSAGE":
+                               return 3;
+                        case "PLAIN_MESSAGE":
+                               return -1;
+
+                        default:
+                                return 0;
                 }
                 
         }
