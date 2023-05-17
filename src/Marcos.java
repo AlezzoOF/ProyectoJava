@@ -74,7 +74,22 @@ public class Marcos extends JFrame {
     private class PrintAction implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
-            System.out.println(tipo.seleccion());
+        //     System.out.println(tipo.seleccion());
+
+                switch(tipo.seleccion()){
+                        case "Mensaje":
+                                JOptionPane.showMessageDialog(Marcos.this, "message");;
+                                break;
+                        case "Confirmar":
+                                JOptionPane.showConfirmDialog(Marcos.this, "Confirmar");
+                                break;
+                        case "Opcion":
+                                JOptionPane.showOptionDialog(Marcos.this, "Option", "title", 0, 0, null, null, null);
+                                break;
+                        case "Entrada":
+                                JOptionPane.showInputDialog(Marcos.this, "Entrada");
+                                break;
+                }
             
         }
 
