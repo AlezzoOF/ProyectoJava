@@ -6,15 +6,18 @@ public class Marcos extends JFrame {
 
     public Marcos() {
         setTitle("Prueba de Java");
-        setBounds(500, 300, 600, 450);// dimenciones del panel
+        // dimenciones del panel
+        setBounds(500, 300, 600, 450);
 
-        JPanel cuadricula = new JPanel();// creando una lamina simple
+        // creando una lamina simple
+        JPanel cuadricula = new JPanel();
         cuadricula.setLayout(new GridLayout(2, 3));
-
-        String primer[] = { "Mensaje", "Confirmar", "Opcion", "Entrada" };// Arreglo que contiene los nombres de los
-                                                                          // botones en esa cuadricula
+        
+        // Arreglo que contiene los nombres de los botones en esa cuadricula                                                                
+        String primer[] = { "Mensaje", "Confirmar", "Opcion", "Entrada" };
         tipo = new Laminas("TIPO", primer);
-        tiposMensajes = new Laminas("Tipo de Mensaje", new String[] { // creando el arreglo en la propia instancia
+        // creando el arreglo en la propia instancia
+        tiposMensajes = new Laminas("Tipo de Mensaje", new String[] { 
                 "ERROR_MESSAGE",
                 "INFORMATION_MESSAGE",
                 "WARNING_MESSAGE",
@@ -43,14 +46,27 @@ public class Marcos extends JFrame {
                 "Campo de texto",
                 "Combo"
         });
-        cuadricula.add(tipo);// creando la lamina donde se muestran los botones
+        // agreagando al marco la lamina donde se muestran los botones
+        cuadricula.add(tipo);
         cuadricula.add(tiposMensajes);
         cuadricula.add(mensajes);
         cuadricula.add(confirmar);
         cuadricula.add(opcion);
         cuadricula.add(entrada);
 
-        add(cuadricula);// agregando la cuadricula al marco
+        //Constuir lamina de debajo
+        JPanel lamina_inferior = new JPanel();
+        //creando el boton PRINT dentro de la lamina 
+        JButton boton_lamina_inferior = new JButton("Print");
+        //Agregandole accion al boton
+        boton_lamina_inferior.addActionListener(new PrintAction());
+        lamina_inferior.add(boton_lamina_inferior);
+
+        setLayout(new BorderLayout());
+        // agregando la lamina principal al marco
+        add(cuadricula, BorderLayout.CENTER);
+        //agregando la lamina inferior al marco
+        add(lamina_inferior, BorderLayout.SOUTH);
 
     }
 
