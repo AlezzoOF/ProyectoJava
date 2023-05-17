@@ -1,10 +1,14 @@
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.util.Date;
 
 public class Marcos extends JFrame {
     private Laminas tipo, tiposMensajes, mensajes, confirmar, opcion, entrada;
-    private String mensaje;
+    private String mensaje = "Hola";
+    private Icon icono = new ImageIcon("src/m.png");
+    private Object objeto = new Date();
+    private Component componenteMensaje = new Lamina_Mostrar();
 
     public Marcos() {
         setTitle("Prueba de Java");
