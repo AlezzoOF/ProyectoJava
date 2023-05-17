@@ -1,5 +1,6 @@
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.*;
 
 public class Marcos extends JFrame {
     private Laminas tipo, tiposMensajes, mensajes, confirmar, opcion, entrada;
@@ -67,6 +68,15 @@ public class Marcos extends JFrame {
         add(cuadricula, BorderLayout.CENTER);
         //agregando la lamina inferior al marco
         add(lamina_inferior, BorderLayout.SOUTH);
+
+    }
+
+    private class PrintAction implements ActionListener {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            System.out.println(tipo.seleccion());
+            
+        }
 
     }
 
