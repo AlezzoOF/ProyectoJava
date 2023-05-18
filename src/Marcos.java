@@ -87,14 +87,14 @@ public class Marcos extends JFrame {
                                         JOptionPane.showMessageDialog(Marcos.this, getMensaje(),"title", getTipoDeMensaje());
                                         break;
                                 case "Confirmar":
-                                        JOptionPane.showConfirmDialog(Marcos.this, getMensaje(),"title", 0, getTipoDeMensaje());
+                                        JOptionPane.showConfirmDialog(Marcos.this, getMensaje(),"title", getConfirmar(), getTipoDeMensaje());
                                         break;
                                 case "Opcion":
-                                        JOptionPane.showOptionDialog(Marcos.this, getMensaje(), "title", 0, getTipoDeMensaje(), null, null,
+                                        JOptionPane.showOptionDialog(Marcos.this, getMensaje(), "title", 1, getTipoDeMensaje(), null, getOpcion(),
                                                         null);
                                         break;
                                 case "Entrada":
-                                        JOptionPane.showInputDialog(Marcos.this, getMensaje(), "title", getTipoDeMensaje());
+                                        JOptionPane.showInputDialog(Marcos.this, getMensaje(), "title", getTipoDeMensaje(), null, getEntrada(), null);
                                         break;
                         }
 
@@ -102,9 +102,10 @@ public class Marcos extends JFrame {
 
         }
 
-        //Metodo para sacar la info de la lamina "mensajes"
+        //Metodo que devuelve un objeto segun la seleccion de field mensaje
 
         public Object getMensaje(){
+                 
                 switch (mensajes.seleccion()) {
                         case "Cadena":
                                 return mensaje;
@@ -124,7 +125,7 @@ public class Marcos extends JFrame {
         }
 
 
-        //Metodo para sacar la info de la lamina "Tipo de Mensaje"
+        //Metodo que devuelve un int segun seleccion de field Tipo de mensasjes
         public int getTipoDeMensaje(){
                 switch (tiposMensajes.seleccion()) {
                         case "ERROR_MESSAGE":
@@ -143,5 +144,53 @@ public class Marcos extends JFrame {
                 }
                 
         }
+
+
+
+         //Metodo que devuelve un int segun seleccion en el field Confirmar dado la seleccion de Confirmar en el fiel TIpo
+        public int getConfirmar(){
+                switch (confirmar.seleccion()) {
+                        case "DEFAULT_OPTION":
+                                return -1;
+                        case "YES_NO_OPTION":
+                                return 0;
+                        case "YES_NO_CANCEL_OPTION":
+                                return 1;
+                        case "OK_CANCEL_OPTION":
+                               return 2;
+                        default:
+                                return -1;
+                }
+                
+        }
+
+
+           //Metodo que devuelve un arrelgo de objetos segun seleccion en el field Opcion dado la seleccion de Opcion en el fiel TIpo
+        public Object[] getOpcion(){
+                switch (opcion.seleccion()) {
+                        case "String[]":
+                                return new String[]{"azul", "amarillo", "rojo"};
+                        case "Icon[]":
+                                return new Icon[]{icono, icono, icono};
+                        case "Object[]":
+                                return new Object[]{mensaje, icono, componenteMensaje, objeto} ;
+                        default:
+                                return null;
+                }
+                
+        }
+
+
+        //Comprobando la seleccion del ultimo field
+        public Object[] getEntrada(){
+                if(entrada.seleccion().equals("Combo")){
+                        return new String[]{"rojo", "verde", "violeta"};
+                }
+                else{
+                        return null;
+                }
+
+        }
+      
 
 }
